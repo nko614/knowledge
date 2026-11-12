@@ -42,8 +42,8 @@ svg{width:100%;height:auto;display:block;margin:8px 0 12px}
 <p>If a test finds a problem, the change goes back to step 2 for that fix and then through the later steps again.</p>
 
 <h2>Example: a 60-hour change</h2>
-<svg viewBox="0 0 760 364" role="img" aria-label="A 60-hour change goes live about 5 to 6 weeks after approval" font-size="13" id="tl"></svg>
-<p>The 60 hours of work are spread across these steps. Much of the calendar time is spent waiting between them. In this example the change is approved on day 0 and goes live on day 38.</p>
+<svg viewBox="0 0 760 364" role="img" aria-label="A 60-hour change goes live 5 weeks after approval" font-size="13" id="tl"></svg>
+<p>The 60 hours of work are spread across these steps. Much of the calendar time is spent waiting between them. In this example the change is approved on day 0 and goes live on day 35.</p>
 
 <h2>What makes a change go live sooner</h2>
 <ul>
@@ -89,10 +89,10 @@ svg{width:100%;height:auto;display:block;margin:8px 0 12px}
 <script>
 const rows = [
   ['Agree requirements', 0, 5], ['Development', 5, 19], ['Code review', 19, 22],
-  ['Functional test', 22, 24], ['Wait for the lock', 24, 31], ['Test week, both teams', 31, 38], ['Release', 38, 38]
+  ['Functional test', 22, 24], ['Wait for the lock', 24, 28], ['Test week, both teams', 28, 35], ['Release', 35, 35]
 ];
 const X = d => 230 + d / 42 * 440, Y = i => 120 + 34 * i;
-let s = '<text x="24" y="28" font-size="15" font-weight="600" fill="var(--ink)">A 60-hour change goes live about 5 to 6 weeks after approval</text>'
+let s = '<text x="24" y="28" font-size="15" font-weight="600" fill="var(--ink)">A 60-hour change goes live 5 weeks after approval</text>'
   + '<text x="24" y="48" font-size="11.5" fill="var(--quiet)">Example: a 60-hour change, in calendar days from approval</text>';
 for (let w = 0; w <= 6; w++) s += `<line x1="${X(w * 7)}" x2="${X(w * 7)}" y1="96" y2="340" stroke="var(--rule)"/><text x="${X(w * 7)}" y="86" text-anchor="middle" font-size="11.5" fill="var(--quiet)">Week ${w}</text>`;
 s += '<line x1="230" x2="670" y1="96" y2="96" stroke="var(--axis)" stroke-width="1.25"/>';
