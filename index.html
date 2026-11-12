@@ -25,7 +25,7 @@ svg{width:100%;height:auto;display:block;margin:8px 0 12px}
 <h1>How Development Works: From Request to Live</h1>
 
 <h2>Hours of work are not a go-live date</h2>
-<p>A change estimated at 60 hours usually goes live 5 to 7 weeks after it is approved. The estimate counts only the hours a developer spends writing the change. It does not count the days the change spends waiting for answers, review, testing and the next release date.</p>
+<p>A change estimated at 60 hours usually goes live 5 to 7 weeks after it is approved. The 60 hours are the working hours Odoo spends on the change, including development and testing. They do not count the days the change spends waiting: for answers, for the test week and for the next release date.</p>
 <p>The hours tell you what the change costs. The target release tells you when it goes live. Every estimate we send will show both.</p>
 
 <h2>The steps every change goes through</h2>
@@ -33,7 +33,7 @@ svg{width:100%;height:auto;display:block;margin:8px 0 12px}
 <div class="table"><table>
 <tr><th>Step</th><th>What happens</th><th>Who</th><th>Typical calendar time</th></tr>
 <tr><td>1. Agree the requirements</td><td>The analyst writes down exactly what the change must do, and the customer confirms it. Questions are answered here.</td><td>Customer and Odoo analyst</td><td>2 to 5 days</td></tr>
-<tr><td>2. Development</td><td>The developer writes the change. This is the step the hours estimate covers.</td><td>Odoo developer</td><td>About 2 weeks</td></tr>
+<tr><td>2. Development</td><td>The developer writes the change.</td><td>Odoo developer</td><td>About 2 weeks</td></tr>
 <tr><td>3. Code review</td><td>A second developer checks the work, including its effect on speed and on other parts of the system. Anything found is fixed.</td><td>Odoo developers</td><td>1 to 3 days</td></tr>
 <tr><td>4. Functional test</td><td>The analyst tests the change against the written requirements and adds a screenshot to the task.</td><td>Odoo analyst</td><td>1 to 2 days</td></tr>
 <tr><td>5. Test week</td><td>The change waits for the pre-production lock. Then Odoo tests the full flows and the customer tests their daily processes.</td><td>Odoo and customer</td><td>1 to 2 weeks</td></tr>
@@ -42,8 +42,8 @@ svg{width:100%;height:auto;display:block;margin:8px 0 12px}
 <p>If a test finds a problem, the change goes back to step 2 for that fix and then through the later steps again.</p>
 
 <h2>Example: a 60-hour change</h2>
-<svg viewBox="0 0 760 364" role="img" aria-label="The 60 hours of development take 2 of the 5 to 6 weeks to go live" font-size="13" id="tl"></svg>
-<p>Development is the largest single step, but most of the calendar time is spent before and after it. In this example the change is approved on day 0 and goes live on day 38.</p>
+<svg viewBox="0 0 760 364" role="img" aria-label="A 60-hour change goes live about 5 to 6 weeks after approval" font-size="13" id="tl"></svg>
+<p>The 60 hours of work, including development and testing, are spread across these steps. Much of the calendar time is spent waiting between them. In this example the change is approved on day 0 and goes live on day 38.</p>
 
 <h2>What makes a change go live sooner</h2>
 <ul>
@@ -73,7 +73,7 @@ svg{width:100%;height:auto;display:block;margin:8px 0 12px}
 <h2>How we will tell you when a change goes live</h2>
 <p>Each estimate will show two things:</p>
 <ul>
-<li><strong>Hours:</strong> the development effort, which is what the change costs.</li>
+<li><strong>Hours:</strong> the work Odoo does on the change, including development and testing, which is what the change costs.</li>
 <li><strong>Target release:</strong> the release date we are aiming for, which is when the change goes live.</li>
 </ul>
 <p>If something moves the target release, we will update the task with the new release and the reason.</p>
@@ -87,11 +87,11 @@ svg{width:100%;height:auto;display:block;margin:8px 0 12px}
 </main>
 <script>
 const rows = [
-  ['Agree requirements', 0, 5], ['Development (60 hours)', 5, 19], ['Code review', 19, 22],
+  ['Agree requirements', 0, 5], ['Development', 5, 19], ['Code review', 19, 22],
   ['Functional test', 22, 24], ['Wait for the lock', 24, 31], ['Test week, both teams', 31, 38], ['Release', 38, 38]
 ];
 const X = d => 230 + d / 42 * 440, Y = i => 120 + 34 * i;
-let s = '<text x="24" y="28" font-size="15" font-weight="600" fill="var(--ink)">The 60 hours of development take 2 of the 5 to 6 weeks to go live</text>'
+let s = '<text x="24" y="28" font-size="15" font-weight="600" fill="var(--ink)">A 60-hour change goes live about 5 to 6 weeks after approval</text>'
   + '<text x="24" y="48" font-size="11.5" fill="var(--quiet)">Example: a 60-hour change, in calendar days from approval</text>';
 for (let w = 0; w <= 6; w++) s += `<line x1="${X(w * 7)}" x2="${X(w * 7)}" y1="96" y2="340" stroke="var(--rule)"/><text x="${X(w * 7)}" y="86" text-anchor="middle" font-size="11.5" fill="var(--quiet)">Week ${w}</text>`;
 s += '<line x1="230" x2="670" y1="96" y2="96" stroke="var(--axis)" stroke-width="1.25"/>';
