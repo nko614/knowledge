@@ -40,10 +40,10 @@ td:not(:first-child)::before{content:attr(data-label) ": ";color:var(--quiet)}
 <h1>How Development Works: From Request to Live</h1>
 
 <h2>Estimated hours and the go-live date</h2>
-<p>A change estimated at 60 hours usually goes live 5 to 7 weeks after it is approved. The 60 hours are the time Odoo's team spends working on the change. They do not count the days the change spends waiting: for answers, for the test week and for the next release date.</p>
+<p>A change estimated at 60 hours usually goes live 5 to 9 weeks after it is approved. The 60 hours are the time Odoo's team spends working on the change. They do not count the days the change spends waiting: for answers, for the test week and for the release date. Where a change falls in that range depends mostly on how long it waits for the next test week.</p>
 
 <h2>The steps every change goes through</h2>
-<p>Every change goes through the same six steps. The times below are typical for a 60-hour change, in working days.</p>
+<p>Every change goes through the same six steps. The times below are typical for a 60-hour change, in working days. A critical fix for a problem in the live system can be released outside the schedule, but it is still reviewed and tested.</p>
 <div class="table"><table>
 <colgroup><col class="step"><col><col class="who"><col class="time"></colgroup>
 <tr><th>Step</th><th>What happens</th><th>Who</th><th>Typical time</th></tr>
@@ -51,14 +51,15 @@ td:not(:first-child)::before{content:attr(data-label) ": ";color:var(--quiet)}
 <tr><td>2. Development</td><td>The developer writes the change and the automated tests that check it.</td><td>Odoo developer</td><td>About 2 weeks</td></tr>
 <tr><td>3. Code review</td><td>A second developer checks the work, including its effect on speed and on other parts of the system. Anything found is fixed.</td><td>Odoo developers</td><td>1 to 3 days</td></tr>
 <tr><td>4. Functional test</td><td>The analyst tests the change against the written requirements and records the result in the task.</td><td>Odoo analyst</td><td>1 to 2 days</td></tr>
-<tr><td>5. Test week</td><td>The change is added to pre-production, a copy of the live system used for testing, together with the other changes for the same release. Odoo tests the full end-to-end flows, the customer tests their daily processes, and the customer approves the release.</td><td>Odoo and customer</td><td>1 to 2 weeks</td></tr>
+<tr><td>5. Test week</td><td>The change waits for the next test week. It is then added to pre-production, a copy of the live system used for testing, together with the other changes for the same release. Odoo tests the full end-to-end flows, the customer tests their daily processes, and the customer approves the release.</td><td>Odoo and customer</td><td>1 week, plus the wait for it to start</td></tr>
 <tr><td>6. Release</td><td>The change goes to production on the scheduled release date. Odoo then checks the main flows in the live system.</td><td>Odoo</td><td>Release day</td></tr>
 </table></div>
-<p>If a test finds a problem, the change goes back to step 2 for that fix and then through the later steps again.</p>
+<p>If a test finds a problem, the developer fixes it and the fix is tested again. If the change is not approved by the end of the test week, it moves to the next release.</p>
 
 <h2>Example: a 60-hour change</h2>
 <svg viewBox="0 0 760 364" role="img" aria-label="A 60-hour change goes live 6 weeks after approval" font-size="13" id="tl"></svg>
-<p>The 60 hours of work are spread across these steps. Much of the calendar time is spent waiting between them. In this example the change is approved on day 0 and goes live on working day 30, six weeks later.</p>
+<p>Odoo's 60 hours of work are spread across these steps. Much of the calendar time is spent waiting between them. In this example the change is approved on day 0 and goes live on working day 30, six weeks later.</p>
+<p>The example waits 5 days for the test week. With a release every two weeks, that wait can be up to 2 weeks. With a release every month, it can be up to 4 weeks, which puts the same change at 9 weeks.</p>
 
 <h2>What makes a change go live sooner</h2>
 <ul>
