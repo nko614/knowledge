@@ -9,24 +9,27 @@
 :root{--bg:#fff;--ink:#1d1d1f;--quiet:#5f6368;--rule:#e3e3e3;--axis:#b9b9b2;--accent:#2f6fd1;--head:#f5f5f3}
 @media (prefers-color-scheme:dark){:root{--bg:#18181a;--ink:#ececec;--quiet:#a3a3a8;--rule:#333;--axis:#6b6b70;--accent:#6ea0f0;--head:#232326}}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
-main{max-width:760px;margin:0 auto;padding:40px 16px 64px}
+main{max-width:840px;margin:0 auto;padding:40px 16px 64px}
 h1{font-size:30px;line-height:1.2;margin:0 0 8px}
 h2{font-size:21px;margin:40px 0 10px}
 p,li{margin:0 0 10px}
 ul{padding-left:22px}
-.table{overflow-x:auto}
-table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:560px}
-th,td{border:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
-th{background:var(--head)}
+.table{overflow-x:auto;margin:16px 0 20px}
+table{border-collapse:collapse;width:100%;font-size:15px;line-height:1.5;min-width:560px;table-layout:fixed}
+col.step{width:21%}col.who{width:18%}col.time{width:15%}
+th,td{border-bottom:1px solid var(--rule);padding:14px 16px 14px 0;text-align:left;vertical-align:top}
+td:first-child{font-weight:600}
+th{font-size:13px;font-weight:600;color:var(--quiet);border-bottom:2px solid var(--axis);padding-top:0}
 svg{width:100%;height:auto;display:block;margin:8px 0 12px}
 @media (max-width:600px){
 main{padding:24px 16px 48px}
 h1{font-size:24px}
 h2{font-size:19px;margin-top:32px}
-table{min-width:0}
+table,tbody{display:block;min-width:0}
+colgroup{display:none}
 tr:first-child{display:none}
 tr{display:block;border:1px solid var(--rule);border-radius:8px;padding:10px 12px;margin-bottom:10px}
-td{display:block;border:0;padding:2px 0}
+td{display:block;border:0;padding:2px 0;font-weight:400}
 td:first-child{font-weight:600;font-size:16px;padding-bottom:4px}
 td:not(:first-child)::before{content:attr(data-label) ": ";color:var(--quiet)}
 }
@@ -43,7 +46,8 @@ td:not(:first-child)::before{content:attr(data-label) ": ";color:var(--quiet)}
 <h2>The steps every change goes through</h2>
 <p>Every change, large or small, goes through the same six steps. The times below are typical for a 60-hour change.</p>
 <div class="table"><table>
-<tr><th>Step</th><th>What happens</th><th>Who</th><th>Typical calendar time</th></tr>
+<colgroup><col class="step"><col><col class="who"><col class="time"></colgroup>
+<tr><th>Step</th><th>What happens</th><th>Who</th><th>Typical time</th></tr>
 <tr><td>1. Agree the requirements</td><td>The analyst writes down what the change must do and how it will be tested. The customer confirms this in writing. Questions are answered here.</td><td>Customer and Odoo analyst</td><td>2 to 5 days</td></tr>
 <tr><td>2. Development</td><td>The developer writes the change and the automated tests that check it.</td><td>Odoo developer</td><td>About 2 weeks</td></tr>
 <tr><td>3. Code review</td><td>A second developer checks the work, including its effect on speed and on other parts of the system. Anything found is fixed.</td><td>Odoo developers</td><td>1 to 3 days</td></tr>
@@ -112,12 +116,12 @@ function draw() {
   const X = d => x0 + d / 42 * (x1 - x0), Y = i => first + step * i, bottom = Y(rows.length - 1) + 16, H = bottom + 24;
   let s = n
     ? '<text x="16" y="24" font-size="15" font-weight="600" fill="var(--ink)">A 60-hour change goes live</text><text x="16" y="44" font-size="15" font-weight="600" fill="var(--ink)">5 weeks after approval</text><text x="16" y="64" font-size="11.5" fill="var(--quiet)">Calendar days from approval</text>'
-    : '<text x="24" y="28" font-size="15" font-weight="600" fill="var(--ink)">A 60-hour change goes live 5 weeks after approval</text><text x="24" y="48" font-size="11.5" fill="var(--quiet)">Example: a 60-hour change, in calendar days from approval</text>';
+    : '<text x="0" y="28" font-size="15" font-weight="600" fill="var(--ink)">A 60-hour change goes live 5 weeks after approval</text><text x="0" y="48" font-size="11.5" fill="var(--quiet)">Example: a 60-hour change, in calendar days from approval</text>';
   for (let w = 0; w <= 6; w++) s += `<line x1="${X(w * 7)}" x2="${X(w * 7)}" y1="${top}" y2="${bottom}" stroke="var(--rule)"/><text x="${X(w * 7)}" y="${top - 10}" text-anchor="middle" font-size="11.5" fill="var(--quiet)">${n ? 'Wk' : 'Week'} ${w}</text>`;
   s += `<line x1="${x0}" x2="${x1}" y1="${top}" y2="${top}" stroke="var(--axis)" stroke-width="1.25"/>`;
   rows.forEach(([name, a, b], i) => {
     const y = Y(i), main = i === 1, c = main ? 'var(--accent)' : 'var(--axis)';
-    s += `<text x="${n ? Math.min(X(a), x1 - 130) : 24}" y="${n ? y - 14 : y + 4}" fill="var(--ink)"${main ? ' font-weight="600"' : ''}>${name}</text>`;
+    s += `<text x="${n ? Math.min(X(a), x1 - 130) : 0}" y="${n ? y - 14 : y + 4}" fill="var(--ink)"${main ? ' font-weight="600"' : ''}>${name}</text>`;
     s += a === b
       ? `<path d="M${X(a)} ${y - 8}l8 8l-8 8l-8 -8z" fill="${c}"/>`
       : `<rect x="${X(a)}" y="${y - 8}" width="${X(b) - X(a)}" height="16" rx="4" fill="${c}" fill-opacity="${main ? .35 : .15}" stroke="${c}" stroke-width="${main ? 2 : 1.25}"/>`;
