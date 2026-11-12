@@ -44,12 +44,12 @@ td:not(:first-child)::before{content:attr(data-label) ": ";color:var(--quiet)}
 <p>Every change, large or small, goes through the same six steps. The times below are typical for a 60-hour change.</p>
 <div class="table"><table>
 <tr><th>Step</th><th>What happens</th><th>Who</th><th>Typical calendar time</th></tr>
-<tr><td>1. Agree the requirements</td><td>The analyst writes down exactly what the change must do, and the customer confirms it. Questions are answered here.</td><td>Customer and Odoo analyst</td><td>2 to 5 days</td></tr>
-<tr><td>2. Development</td><td>The developer writes the change.</td><td>Odoo developer</td><td>About 2 weeks</td></tr>
+<tr><td>1. Agree the requirements</td><td>The analyst writes down what the change must do and how it will be tested. The customer confirms this in writing. Questions are answered here.</td><td>Customer and Odoo analyst</td><td>2 to 5 days</td></tr>
+<tr><td>2. Development</td><td>The developer writes the change and the automated tests that check it.</td><td>Odoo developer</td><td>About 2 weeks</td></tr>
 <tr><td>3. Code review</td><td>A second developer checks the work, including its effect on speed and on other parts of the system. Anything found is fixed.</td><td>Odoo developers</td><td>1 to 3 days</td></tr>
-<tr><td>4. Functional test</td><td>The analyst tests the change against the written requirements and adds a screenshot to the task.</td><td>Odoo analyst</td><td>1 to 2 days</td></tr>
-<tr><td>5. Test week</td><td>The change waits for the pre-production lock. Then Odoo tests the full flows and the customer tests their daily processes.</td><td>Odoo and customer</td><td>1 to 2 weeks</td></tr>
-<tr><td>6. Release</td><td>The change goes to production on the next scheduled release date.</td><td>Odoo</td><td>Release day</td></tr>
+<tr><td>4. Functional test</td><td>The analyst tests the change against the written requirements and records the result in the task.</td><td>Odoo analyst</td><td>1 to 2 days</td></tr>
+<tr><td>5. Test week</td><td>The change is added to pre-production, a copy of the live system used for testing, together with the other changes for the same release. Odoo tests the full end-to-end flows, the customer tests their daily processes, and the customer approves the release.</td><td>Odoo and customer</td><td>1 to 2 weeks</td></tr>
+<tr><td>6. Release</td><td>The change goes to production on the scheduled release date. Odoo then checks the main flows in the live system.</td><td>Odoo</td><td>Release day</td></tr>
 </table></div>
 <p>If a test finds a problem, the change goes back to step 2 for that fix and then through the later steps again.</p>
 
@@ -62,7 +62,7 @@ td:not(:first-child)::before{content:attr(data-label) ": ";color:var(--quiet)}
 <li>The request is complete and clear before work starts, so no questions come up during development.</li>
 <li>The change affects one area, such as a report or a single screen, and does not touch other processes.</li>
 <li>A developer is free to start right away and can work on it without interruption.</li>
-<li>Development finishes just before the pre-production lock, so the change does not wait long for the test week.</li>
+<li>Development finishes just before a test week starts, so the change does not wait long for testing.</li>
 <li>Testing finds no problems, so nothing goes back for rework.</li>
 </ul>
 
@@ -75,7 +75,7 @@ td:not(:first-child)::before{content:attr(data-label) ": ";color:var(--quiet)}
 <li>Testing in step 4 or step 5 finds a problem, and the change goes back to development.</li>
 <li>During the test week, the customer finds that they expected something that was not in the written requirements. That becomes extra work or a new request.</li>
 <li>An urgent problem in production takes the developer away from the change.</li>
-<li>The change misses the pre-production lock and waits for the following release.</li>
+<li>The change is not ready when the test week starts, so it waits for the following release.</li>
 </ul>
 
 <h2>Why more developers do not always make it faster</h2>
@@ -101,7 +101,7 @@ td:not(:first-child)::before{content:attr(data-label) ": ";color:var(--quiet)}
 <script>
 const rows = [
   ['Agree requirements', 0, 5], ['Development', 5, 19], ['Code review', 19, 22],
-  ['Functional test', 22, 24], ['Wait for the lock', 24, 28], ['Test week, both teams', 28, 35], ['Release', 35, 35]
+  ['Functional test', 22, 24], ['Wait for test week', 24, 28], ['Test week, both teams', 28, 35], ['Release', 35, 35]
 ];
 const tl = document.getElementById('tl'), phone = matchMedia('(max-width:600px)');
 function draw() {
